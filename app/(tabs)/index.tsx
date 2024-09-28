@@ -1,13 +1,14 @@
-import { View, ListRenderItem, FlatList } from "react-native";
-import ExploreTabHeader from "@/components/explore_tab/ExploreTabHeader";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import useGetRestaurantsQuery from "@/hooks/useGetRestaurantsQuery";
-import LoadingView from "@/components/LoadingView";
-import ExploreTabEmptyState from "@/components/explore_tab/ExploreTabEmptyState";
-import { Restaurant } from "@/types/restaurant";
 import { useCallback } from "react";
-import RestaurantCard from "@/components/explore_tab/RestaurantCard";
+import { FlatList, ListRenderItem, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 import { TAB_BAR_OFFSET } from "@/app/(tabs)/_layout";
+import ExploreTabEmptyState from "@/components/explore_tab/ExploreTabEmptyState";
+import ExploreTabHeader from "@/components/explore_tab/ExploreTabHeader";
+import RestaurantCard from "@/components/explore_tab/RestaurantCard";
+import LoadingView from "@/components/LoadingView";
+import useGetRestaurantsQuery from "@/hooks/useGetRestaurantsQuery";
+import { Restaurant } from "@/types/restaurant";
 
 export default function ExploreTabScreen() {
   const { top, bottom } = useSafeAreaInsets();
@@ -27,7 +28,7 @@ export default function ExploreTabScreen() {
 
   return (
     <FlatList
-      className={"px-4"}
+      className="px-4"
       contentContainerStyle={{
         paddingTop: top,
         paddingBottom: bottom + TAB_BAR_OFFSET + 16,

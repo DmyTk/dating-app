@@ -1,8 +1,9 @@
-import { FC } from "react";
-import { Restaurant } from "@/types/restaurant";
-import { StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
+import { FC } from "react";
+import { StyleSheet, Text, View } from "react-native";
+
+import { Restaurant } from "@/types/restaurant";
 
 const HEIGHT = 100;
 
@@ -14,7 +15,7 @@ const RestaurantCard: FC<Props> = ({ item }) => {
   return (
     <View className="relative">
       <View
-        className="border-appBlue z-10 h-[100px] w-full flex-row rounded-lg border bg-white p-2"
+        className="z-10 h-[100px] w-full flex-row rounded-lg border border-appBlue bg-white p-2"
         style={{ gap: 8, height: HEIGHT }}
       >
         <Image

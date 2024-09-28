@@ -1,11 +1,12 @@
+import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { FC, useMemo } from "react";
-import { Restaurant } from "@/types/restaurant";
 import { View } from "react-native";
 import MapView, { LatLng, Marker } from "react-native-maps";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { getCenterFromPoints } from "@/utils/geolocationHelper";
+
 import Button from "@/components/ui/Button";
-import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { Restaurant } from "@/types/restaurant";
+import { getCenterFromPoints } from "@/utils/geolocationHelper";
 
 type Props = {
   restaurants: Restaurant[];

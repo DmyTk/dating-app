@@ -1,18 +1,18 @@
-import { Tabs } from "expo-router";
-import React from "react";
-
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Text } from "react-native";
-import classNames from "classnames";
 import {
   Entypo,
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import classNames from "classnames";
+import { Tabs } from "expo-router";
+import React from "react";
+import { Text } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export const TAB_BAR_BOTTOM_POSITION = 8;
-export const TAB_BAR_HEIGHT = 66;
+const TAB_BAR_BOTTOM_POSITION = 8;
+const TAB_BAR_HEIGHT = 66;
+
 export const TAB_BAR_OFFSET = TAB_BAR_HEIGHT + TAB_BAR_BOTTOM_POSITION;
 
 export default function TabLayout() {
@@ -56,7 +56,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Explore",
-          tabBarIcon: ({ color, focused }) => (
+          tabBarIcon: ({ color }) => (
             <MaterialIcons name="explore" size={20} color={color} />
           ),
         }}

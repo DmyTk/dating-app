@@ -1,10 +1,11 @@
+import { AntDesign } from "@expo/vector-icons";
 import { FC } from "react";
 import { Text, View } from "react-native";
-import TextInput from "@/components/ui/TextInput";
-import { AntDesign } from "@expo/vector-icons";
-import { Restaurant } from "@/types/restaurant";
+
 import RestaurantsMap from "@/components/explore_tab/RestaurantsMap";
 import Button from "@/components/ui/Button";
+import TextInput from "@/components/ui/TextInput";
+import { Restaurant } from "@/types/restaurant";
 
 type Props = {
   restaurants: Restaurant[];

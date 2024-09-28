@@ -1,6 +1,6 @@
+import classNames from "classnames";
 import { ComponentProps, FC, PropsWithChildren } from "react";
 import { TouchableOpacity } from "react-native";
-import classNames from "classnames";
 
 type Props = { variant?: "regular" | "circle" } & ComponentProps<
   typeof TouchableOpacity

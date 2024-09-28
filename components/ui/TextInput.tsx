@@ -1,6 +1,6 @@
+import classNames from "classnames";
 import { ComponentProps, FC, ReactElement } from "react";
 import { TextInput as RNTextInput, View } from "react-native";
-import classNames from "classnames";
 
 type TextInputProps = ComponentProps<typeof RNTextInput>;
 
