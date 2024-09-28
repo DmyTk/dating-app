@@ -1,28 +1,51 @@
+import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import { FC } from "react";
-import { StyleSheet, Text, View } from "react-native";
-
-import { Restaurant } from "@/types/restaurant";
+import { FC, memo, useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const HEIGHT = 100;
 
 type Props = {
-  item: Restaurant;
+  image: string;
+  name: string;
+  description: string;
+  price: number;
+  city: string;
 };
 
-const RestaurantCard: FC<Props> = ({ item }) => {
+const RestaurantCard: FC<Props> = ({
+  description,
+  image,
+  name,
+  price,
+  city,
+}) => {
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
   return (
     <View className="relative">
       <View
-        className="z-10 h-[100px] w-full flex-row rounded-lg border border-appBlue bg-white p-2"
+        className="z-10 w-full flex-row rounded-lg border border-appBlue bg-white p-2"
         style={{ gap: 8, height: HEIGHT }}
       >
-        <Image
-          source={{ uri: item.image }}
-          className="h-full w-16 rounded"
-          contentFit="cover"
-        />
+        <View className="relative">
+          <Image
+            source={{ uri: image }}
+            className="h-full w-16 rounded"
+            contentFit="cover"
+          />
+          <Pressable
+            className="absolute left-1 top-1"
+            onPress={() => setIsBookmarked((prev) => !prev)}
+          >
+            <Ionicons
+              name={isBookmarked ? "bookmark" : "bookmark-outline"}
+              color={isBookmarked ? "white" : "black"}
+              size={18}
+            />
+          </Pressable>
+        </View>
 
         <View style={{ gap: 8 }} className="flex-1">
           <View
@@ -30,12 +53,14 @@ const RestaurantCard: FC<Props> = ({ item }) => {
             style={{ gap: 4 }}
           >
             <Text numberOfLines={1} className="font-lg flex-1 font-semibold">
-              {item.name}
+              {name}
             </Text>
-            <Text>{getPriceLabel(item.price)}</Text>
+            <Text>{getPriceLabel(price)}</Text>
           </View>
-          <Text numberOfLines={2}>{item.description}</Text>
-          <Text>{item.city}</Text>
+          <Text numberOfLines={2} className="text-zinc-500">
+            {description}
+          </Text>
+          <Text className="text-zinc-500">{city}</Text>
         </View>
       </View>
 
@@ -51,7 +76,9 @@ const RestaurantCard: FC<Props> = ({ item }) => {
 };
 
 function getPriceLabel(price: number) {
-  return `$${Math.round(price)}`;
+  if (price <= 10) return "$";
+  if (price <= 50) return "$$";
+  else return "$$$";
 }
 
-export default RestaurantCard;
+export default memo(RestaurantCard);

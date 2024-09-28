@@ -23,8 +23,6 @@ npm run android
 
 This will create a development build, install it on the simulator, and open it.
 
-In the output, you'll find options to open the app in a iOS simulator or Android emulator.
-
 ## Linting
 
 - `npm run format` - automatically fixes code style according to prettier rules

@@ -5,9 +5,10 @@ import {
 } from "@expo/vector-icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import classNames from "classnames";
+import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const TAB_BAR_BOTTOM_POSITION = 8;
@@ -32,7 +33,7 @@ export default function TabLayout() {
         tabBarStyle: {
           position: "absolute",
           bottom: TAB_BAR_BOTTOM_POSITION + bottom,
-          backgroundColor: "rgba(219, 244, 249, 0.95)",
+          backgroundColor: "rgba(219, 244, 249, 0.5)",
           paddingBottom: 0,
           marginHorizontal: 16,
           borderRadius: 999,
@@ -42,6 +43,17 @@ export default function TabLayout() {
           borderTopColor: "black",
           borderColor: "black",
         },
+        tabBarBackground: () => (
+          <BlurView
+            intensity={80}
+            style={{
+              ...StyleSheet.absoluteFillObject,
+              backgroundColor: "transparent",
+              borderRadius: 999,
+              overflow: "hidden",
+            }}
+          />
+        ),
         tabBarLabel: ({ focused, color, children }) => (
           <Text
             style={{ color }}

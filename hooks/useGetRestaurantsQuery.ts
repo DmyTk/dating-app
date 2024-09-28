@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import RestaurantsService from "@/services/restaurants";
 
-export const GET_RESTAURANTS_QUERY_KEY = "get_restaurants";
+const GET_RESTAURANTS_QUERY_KEY = "restaurants";
 
 const useGetRestaurantsQuery = () => {
   return useQuery({

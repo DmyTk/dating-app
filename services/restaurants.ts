@@ -1,12 +1,21 @@
-import { MOCK_RESTAURANTS } from "@/mocks/restaurants";
+import firestore from "@react-native-firebase/firestore";
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+import { Restaurant } from "@/types/restaurant";
 
-// TODO: integrate firebase
+const collection =
+  firestore().collection<Omit<Restaurant, "id">>("restaurants");
+
 class RestaurantsService {
-  static async getRestaurants() {
-    await delay(1000);
-    return MOCK_RESTAURANTS;
+  static async getRestaurants(): Promise<Restaurant[]> {
+    const restaurants = await collection.orderBy("name", "asc").get();
+
+    return restaurants.docs.map(
+      (doc) =>
+        ({
+          id: doc.id,
+          ...doc.data(),
+        }) as Restaurant,
+    );
   }
 }
 

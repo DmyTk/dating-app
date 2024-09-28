@@ -1,5 +1,6 @@
 import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Point } from "geojson";
 import { FC, useMemo } from "react";
 import { View } from "react-native";
 import MapView, { LatLng, Marker } from "react-native-maps";
@@ -8,13 +9,25 @@ import Button from "@/components/ui/Button";
 import { Restaurant } from "@/types/restaurant";
 import { getCenterFromPoints } from "@/utils/geolocationHelper";
 
+const DEFAULT_CENTER: LatLng = {
+  latitude: 48.86690832988803,
+  longitude: 2.360068046020385,
+};
+
 type Props = {
   restaurants: Restaurant[];
 };
 
 const RestaurantsMap: FC<Props> = ({ restaurants }) => {
   const mapCenter = useMemo(() => {
-    const points = restaurants.map((r) => r.point);
+    if (!restaurants.length) return DEFAULT_CENTER;
+
+    const points = restaurants.map(
+      (r): Point => ({
+        type: "Point",
+        coordinates: [r.point.latitude, r.point.longitude],
+      }),
+    );
     const center = getCenterFromPoints(points);
     const mapCenter: LatLng = {
       latitude: center.geometry.coordinates[0],
@@ -41,8 +54,8 @@ const RestaurantsMap: FC<Props> = ({ restaurants }) => {
           <Marker
             key={`marker-${r.id}`}
             coordinate={{
-              latitude: r.point.coordinates[0],
-              longitude: r.point.coordinates[1],
+              latitude: r.point.latitude,
+              longitude: r.point.longitude,
             }}
           >
             <RestaurantMarker />
