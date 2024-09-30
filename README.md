@@ -4,6 +4,10 @@ Test assessment showcasing a screen of the Dating App mobile application.
 
 ## Screencast
 
+
+https://github.com/user-attachments/assets/958c195c-a8c7-4eff-9755-04a19fca3645
+
+
 ## Get Started
 
 ### Install dependencies
